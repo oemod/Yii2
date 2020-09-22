@@ -1,0 +1,50 @@
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.php
+
+RewriteEngine On
+RewriteBase /
+RewriteCond %{HTTP_HOST} ^www.namhocsaigon.com [NC]
+RewriteRule ^(.*)$ https://namhocsaigon.com/$1 [L,R=301]
+RewriteCond %{SERVER_PORT} ^80$
+RewriteRule ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
+
+Order Deny,Allow 
+Deny from 2402:800:637c:7a0a:98ba:e4f7:f949:791f
+Deny from 222.252.20.15
+
+<ifModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 5 seconds"
+  ExpiresByType image/x-icon "access plus 25920000 seconds"
+  ExpiresByType image/jpeg "access plus 25920000 seconds"
+  ExpiresByType image/png "access plus 25920000 seconds"
+  ExpiresByType image/gif "access plus 25920000 seconds"
+  ExpiresByType application/x-shockwave-flash "access plus 25920000 seconds"
+  ExpiresByType text/css "access plus 6048000 seconds"
+  ExpiresByType text/javascript "access plus 604800 seconds"
+  ExpiresByType application/javascript "access plus 2160000 seconds"
+  ExpiresByType application/x-javascript "access plus 2160000 seconds"
+  ExpiresByType text/html "access plus 6000 seconds"
+ ExpiresByType application/xhtml+xml "access plus 6000 seconds"
+</ifModule>
+# END Expire headers
+ 
+
+<ifModule mod_headers.c>
+  <filesMatch "\.(ico|jpe?g|png|gif|swf)$">
+   Header set Cache-Control "public"
+ </filesMatch>
+ <filesMatch "\.(css)$">
+   Header set Cache-Control "public"
+  </filesMatch>
+  <filesMatch "\.(js)$">
+    Header set Cache-Control "private"
+  </filesMatch>
+  <filesMatch "\.(x?html?|php)$">
+    Header set Cache-Control "private, must-revalidate"
+  </filesMatch>
+</ifModule>
+
+

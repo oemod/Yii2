@@ -1,0 +1,18 @@
+{
+  "name": "pkthienhoa",
+  "version": "1.0.0",
+  "homepage": "#",
+  "authors": [
+    "FuE"
+  ],
+  "license": "GPL-3.0+",
+  "private": true,
+  "ignore": [
+    "node_modules",
+    "assets/vendor"
+  ],
+  "devDependencies": {
+    "fontawesome": "4.3.0",
+    "bootstrap": "3.3.2"
+  }
+}

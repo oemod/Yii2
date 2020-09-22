@@ -1,0 +1,211 @@
+#box-getphone {
+  display: none;
+  transform: translate(-50%, -50%) scale(1, 1);
+  z-index: 99999;
+  border-radius: 4px;
+  width: 440px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  background-color: #f4f4f4;
+  transition: all 0.8s ease-out 0s;
+  overflow: hidden;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, .1);
+  .header {
+    background-image: linear-gradient(45deg, #56ab2f, #0ab326);
+    color: #fff;
+    padding: 10px 0 15px 15px;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1px solid #186cb5;
+    img{
+      position: absolute;
+      top: 5%;
+      right: 10%;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+    }
+    strong {
+      text-transform: uppercase;
+      font-size: 18px !important;
+      margin: 15px 0 0 0;
+      color: #fff;
+    }
+  }
+  .km{
+    margin-top: 10px;
+    padding: 0 15px;
+    h4{
+      font-size: 16px;
+      color: #db1f2e;
+      font-weight: 700;
+      padding: 4px 0;
+    }
+    p{
+      font-size: 13px;
+      color: #6b451e;
+    }
+    ul{
+      text-align: left;
+      list-style: none;
+      li{
+        font-size: 14px;
+        color: #3c855a;
+      }
+    }
+  }
+  form#order-form_100 {
+    padding: 10px;
+    position: relative;
+    overflow: hidden;
+    input {
+      width: 75%;
+      border: 2px solid #fff;
+      -webkit-box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.4);
+      box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.4);
+      padding: 10px;
+      border-radius: 8px;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      height: 44px;
+      float: left;
+      color: #222;
+    }
+    .btn-submit {
+      background: #02a217;
+      border-radius: 8px;
+      border: 2px solid #fff;
+      float: right;
+      font-size: 16px;
+      font-weight: 500;
+      height: 42px;
+      letter-spacing: 0.05em;
+      margin-left: 10px;
+      text-transform: uppercase;
+      width: 20%;
+    }
+  }
+  .btn-support {
+    overflow: hidden;
+    padding: 0 10px;
+    a {
+      display: inline-block;
+      padding: 10px 10px;
+      width: 32%;
+      line-height: 1;
+      text-align: center;
+      font-weight: bold;
+      color: #fff;
+      background-color: #f49813;
+      text-decoration: none;
+      font-size: 12px;
+    }
+    a.btn-hotline {
+      background-color: #733D8B;
+    }
+    a.online {
+      background-color: #f7ad00;
+    }
+    a.btn-zalo{
+      background-color: #028ce3;
+    }
+  }
+  .block-info {
+    color: #f83434;
+    font-size: 12px;
+    padding: 10px;
+    text-align: center;
+  }
+  .btn-close {
+    position: absolute;
+    top: -5px;
+    right: 5px;
+    font-size: 24px;
+    cursor: pointer;
+    i {
+      color: #d7384e;
+    }
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  #box-getphone {
+    width: 322px;
+  }
+
+  #box-getphone .header h2 {
+    font-size: 14px;
+    font-weight: bold;
+  }
+}
+
+.fixed-right {
+  position: fixed;
+  bottom: 100px;
+  right: 0;
+  z-index: 9999;
+  li {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+    margin-bottom: 10px;
+    a {
+      min-width: 90px;
+      position: relative;
+      .icon {
+        display: inline-block;
+        width: 45px;
+        height: 45px;
+        position: absolute;
+        z-index: 999;
+        left: -30px;
+        top: -4px;
+        -webkit-animation: swing 1.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both infinite;
+        animation: swing 1.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both infinite;
+      }
+      span.text-desc {
+        background-color: #028ce3;
+        text-align: right;
+        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
+        color: #fff;
+        display: block;
+        font-size: 12px;
+        font-weight: bold;
+        letter-spacing: -0.05em;
+        line-height: 36px;
+        padding: 0 10px 0 20px;
+        text-transform: uppercase;
+      }
+    }
+    .icon-order {
+      background: url(/themes/assets/images/icon-dathang.png);
+      -webkit-animation: tada linear 1.5s infinite;
+      animation: tada linear 1.5s infinite;
+    }
+    .icon-fb {
+      background: url(/themes/assets/images/icon-fb.png);
+      -webkit-animation: tada linear 1.5s infinite;
+      animation: tada linear 1.5s infinite;
+    }
+    .icon-zalo {
+      background: url(/themes/assets/images/icon-zalo.png);
+      -webkit-animation: tada linear 1.5s infinite;
+      animation: tada linear 1.5s infinite;
+    }
+  }
+  li.btn-order span.text-desc {
+    background-color: #4caf50;
+  }
+  li.chat-fb span.text-desc {
+    background: #1964ab;
+  }
+}
+
+#detail-pc article#related-news ul.blog-related li .pic img{
+  width: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  height: 90px;
+}

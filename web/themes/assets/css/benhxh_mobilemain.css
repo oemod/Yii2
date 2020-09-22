@@ -1,0 +1,54 @@
+.fixed-footer {
+    background-color: #007236 !important;
+    /*color:#ffffff !important;*/
+}
+.fixed-footer {
+    background: #ffffff;
+    -webkit-box-shadow: 0 -2px 12px 0 #d2d7da;
+    box-shadow: 0 -2px 12px 0 #d2d7da;
+    position: fixed;
+    bottom: 0;
+    padding: 5px 0;
+    width: 100%;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.fixed-footer .col {
+    width: 33.33%;
+    float: left;
+    text-align: center;
+    border-right: 1px solid #d7d7d7;
+}
+
+
+.fixed-footer .col span {
+    color: #fff !important;
+}
+
+.fixed-footer .col span {
+    color: #000;
+    font-size: 14px;
+}
+
+
+
+.fixed-footer .support .icon {
+    background-position: 0px 0 !important;
+}
+.fixed-footer .hotline .icon {
+    background-position: -30px 0 !important;
+}
+.fixed-footer .register-form .icon {
+    background-position: -70px 0 !important;
+}
+
+
+
+.fixed-footer .icon {
+    width: 35px;
+    height: 30px;
+    background: url(../images/icon-fixed.png) no-repeat !important;
+    display: block;
+    margin: 0 auto;
+}

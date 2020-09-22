@@ -1,0 +1,34 @@
+.popup-adw-pc {
+    position: fixed;
+    transform: translate(-50%, -50%) scale(0, 0);
+    left: 50%;
+    top: 50%;
+    z-index: -9;
+    transition: all 0.8s ease-out 0s;
+    opacity: 0;
+}
+.popup-adw-pc.active {
+  transform: translate(-50%, -50%) scale(1, 1);
+  z-index: 9999;
+  opacity: 1;
+}
+.popup-adw-pc .wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.popup-adw-pc .wrapper img {
+    border: 3px solid #4baa8d;
+    border-radius: 6px;
+}
+.popup-adw-pc .wrapper .btn-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 999;
+    color: #f00;
+    cursor: pointer;
+    padding: 5px 10px 0 10px;
+    font-weight: bold;
+    display: inline-block;
+}
