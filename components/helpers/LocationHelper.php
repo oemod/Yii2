@@ -5,9 +5,11 @@ namespace app\components\helpers;
 use Yii;
 use app\models\User;
 
-class LocationHelper {
+class LocationHelper
+{
 
-    public static function getLocationByAddress($address) {
+    public static function getLocationByAddress($address)
+    {
 
         if (strpos($address, "Vietnam") || strpos($address, "Việt Nam") || strpos($address, "việt nam") || strpos($address, "việt Nam") || strpos($address, "Viet Nam") != false || strpos($address, "viet nam") || strpos($address, "Viet nam") || strpos($address, "viet Nam") || strpos($address, "vietnam") || strpos($address, "VietNam") || strpos($address, "vietNam") || strpos($address, "Việt nam") || strpos($address, "ViệtNam")) {
             $preg = array(
@@ -15,7 +17,7 @@ class LocationHelper {
                 '/(?<!\\\\)\viet nam(.*?)/si' => "Việt Nam",
                 '/(?<!\\\\)\Viet nam(.*?)/si' => "Việt Nam",
                 '/(?<!\\\\)\viet Nam(.*?)/si' => "Việt Nam",
-                '/(?<!\\\\)\vietnam(.*?)/si' => "Việt Nam",
+                '/(?<!\\\\)\avietnam(.*?)/si' => "Việt Nam",
                 '/(?<!\\\\)\VietNam(.*?)/si' => "Việt Nam",
                 '/(?<!\\\\)\vietNam(.*?)/si' => "Việt Nam",
                 '/(?<!\\\\)\Vietnam(.*?)/si' => "Việt Nam",
@@ -28,9 +30,9 @@ class LocationHelper {
             $address = preg_replace(array_keys($preg), array_values($preg), $address);
         } else {
 
-            $address .=", Việt Nam";
+            $address .= ", Việt Nam";
         }
-        
+
         $prepAddr = str_replace(' ', '+', $address);
         $ch = curl_init(); // initiate curl
         $url = "http://maps.google.com/maps/api/geocode/json?address=" . $prepAddr;
@@ -41,7 +43,7 @@ class LocationHelper {
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
         if ($output->status == 'OK' && $httpCode == 200) {
-           
+
             return array(
                 'lat' => $output->results[0]->geometry->location->lat,
                 'long' => $output->results[0]->geometry->location->lng
@@ -51,7 +53,8 @@ class LocationHelper {
         }
     }
 
-    public static function getAddressByGG($address) {
+    public static function getAddressByGG($address)
+    {
 
         if (strpos($address, "Vietnam") || strpos($address, "Việt Nam") || strpos($address, "việt nam") || strpos($address, "việt Nam") || strpos($address, "Viet Nam") != false || strpos($address, "viet nam") || strpos($address, "Viet nam") || strpos($address, "viet Nam") || strpos($address, "vietnam") || strpos($address, "VietNam") || strpos($address, "vietNam") || strpos($address, "Việt nam") || strpos($address, "ViệtNam")) {
             $preg = array(
@@ -72,7 +75,7 @@ class LocationHelper {
             $address = preg_replace(array_keys($preg), array_values($preg), $address);
         } else {
 
-            $address .=", Việt Nam";
+            $address .= ", Việt Nam";
         }
 
         $prepAddr = str_replace(' ', '+', $address);
@@ -124,6 +127,7 @@ class LocationHelper {
             return false;
         }
     }
+
     public static function getLocationByIpAdress($ip)
     {
         $ch = curl_init(); // initiate curl
@@ -134,22 +138,26 @@ class LocationHelper {
         $output = json_decode($output);
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
-        if($output != null){
+        if ($output != null) {
             return $output;
-        }else{
+        } else {
             return null;
         }
-        echo'<pre>'; var_dump($output); die;
+        echo '<pre>';
+        var_dump($output);
+        die;
         if ($output->status == 'OK' && $httpCode == 200) {
-            
+
         }
     }
 
-    public static function getLocationByBrowser() {
-        
+    public static function getLocationByBrowser()
+    {
+
     }
 
-    public static function getUserNearByLocation($lat, $lng, $distance = 5, $limit = 10, $offset = 0) {
+    public static function getUserNearByLocation($lat, $lng, $distance = 5, $limit = 10, $offset = 0)
+    {
         $sql = 'SELECT user_id,username, 
                 ( 6371 * acos( cos( radians(' . $lat . ') ) * cos(radians(latitude) ) * cos(radians(longitude)
                  - radians(' . $lng . ') ) + sin(radians(' . $lat . ')) * sin( radians(latitude) ) ) ) 
@@ -158,7 +166,8 @@ class LocationHelper {
         return $listUser;
     }
 
-    public static function getThreadNearByLocation($lat_current, $lng_current, $distance = 5, $limit = 10, $offset = 0) {
+    public static function getThreadNearByLocation($lat_current, $lng_current, $distance = 5, $limit = 10, $offset = 0)
+    {
         $sql = 'SELECT  `pdc_thread`.`created_at` AS `thread_create`, `user`.`created_at` AS `user_create`, `user`.`address`, `pdc_thread`.*,
                 ( 6371 * acos( cos( radians(' . $lat_current . ') ) * cos(radians(pdc_thread.latitude) ) * cos(radians(pdc_thread.longitude)
                  - radians(' . $lng_current . ') ) + sin(radians(' . $lat_current . ')) * sin( radians(pdc_thread.latitude) ) ) ) 
@@ -168,12 +177,13 @@ class LocationHelper {
                  WHERE pdc_thread.discussion_state="visible" AND `pdc_thread`.`discussion_open`=1 AND pdc_thread.buy_pass =0 
                  HAVING distance < ' . $distance . ' ORDER BY distance LIMIT ' . $offset . ', ' . $limit . '';
         $listThread = User::findBySql($sql)
-                ->asArray()
-                ->all();
+            ->asArray()
+            ->all();
         return $listThread;
     }
 
-    public static function Getlocation($latitude_curent, $longitude_curent) {
+    public static function Getlocation($latitude_curent, $longitude_curent)
+    {
         $geolocation = $latitude_curent . ',' . $longitude_curent;
         $ch = curl_init(); // initiate curl
         $url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' . $geolocation . '&sensor=false';
@@ -265,7 +275,8 @@ class LocationHelper {
         }
     }
 
-    public static function GetlocationByQuang($address) {
+    public static function GetlocationByQuang($address)
+    {
         if (strpos($address, "Vietnam") || strpos($address, "Việt Nam") || strpos($address, "việt nam") || strpos($address, "việt Nam") || strpos($address, "Viet Nam") != false || strpos($address, "viet nam") || strpos($address, "Viet nam") || strpos($address, "viet Nam") || strpos($address, "vietnam") || strpos($address, "VietNam") || strpos($address, "vietNam") || strpos($address, "Việt nam") || strpos($address, "ViệtNam")) {
             $preg = array(
                 '/(?<!\\\\)\Viet Nam(.*?)/si' => "Việt Nam",
@@ -285,7 +296,7 @@ class LocationHelper {
             $address = preg_replace(array_keys($preg), array_values($preg), $address);
         } else {
 
-            $address .=", Việt Nam";
+            $address .= ", Việt Nam";
         }
 
         $prepAddr = str_replace(' ', '+', $address);

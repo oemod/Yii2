@@ -2,7 +2,6 @@
 
 $params = require(__DIR__ . '/params.php');
 $db = require __DIR__ . '/db.php';
-$namkhoa = require __DIR__ . '/namkhoa.php';
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
@@ -118,8 +117,6 @@ $config = [
                 'author'.'/'.'<title>' => 'fontend/author/index',
                 '<title>' => 'fontend/detail/index',
                 '<title>'.'/'.'<category_name>' => 'fontend/list/index',
-                // '/benh-hau-mon.html' => 'fontend/category1/index',
-                // '/benh-xa-hoi' => 'fontend/category1/index',
                 '<controller:\w+>/<title:[\d\w\-_]+>-<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',

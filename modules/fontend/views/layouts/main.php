@@ -46,12 +46,10 @@ HomeAsset::register($this);
           hreflang="vi-vn"/>
     <link rel="icon" href="<?php echo $this->context->favicon; ?>" type="image/x-icon">
     <link rel="shortcut icon" href="<?php echo $this->context->favicon; ?>" type="image/x-icon">
-
     <?= Html::csrfMetaTags() ?>
     <meta name="google-site-verification" content="Qd9ZoQ-lEBfVFOx5K_ZwFkVreVvSvp305_0K3NPvmUA"/>
     <?php $this->head() ?>
     <?= $this->context->js; ?>
-
 
     <script type="application/ld+json">
 {
@@ -84,8 +82,6 @@ HomeAsset::register($this);
   ]
 }
 
-
-
     </script>
     <script type="application/ld+json">
 {
@@ -100,8 +96,6 @@ HomeAsset::register($this);
     "query-input": "required name=search_term_string"
   }
 }
-
-
 
     </script>
     <script type="application/ld+json">
@@ -125,8 +119,6 @@ HomeAsset::register($this);
   }
 }
 }
-
-
 
     </script>
     <script type="application/ld+json">
@@ -190,12 +182,7 @@ HomeAsset::register($this);
         "https://mix.com/namhocsaigon"
   ]
 }
-
-
-
     </script>
-
-
 </head>
 <body>
 <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
@@ -406,25 +393,7 @@ HomeAsset::register($this);
     </ul>
 </div>
 
-
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true;
-        s1.src='https://embed.tawk.to/5f27afe24f3c7f1c910db1c2/default';
-        s1.charset='UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-    })();
-</script>
-<!--End of Tawk.to Script-->
-
 <?php $this->endBody() ?>
-<script>
-    new WOW().init();
-</script>
 </body>
 </html>
 <?php $this->endPage() ?>
