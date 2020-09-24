@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+use yii\widgets\Breadcrumbs;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ConfigSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -10,32 +10,34 @@ use yii\grid\GridView;
 $this->title = 'Configs';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="config-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a('Create Config', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'address:ntext',
-            'hotline',
-            'title',
-            'meta_keywords:ntext',
-            // 'meta_description:ntext',
-            // 'logo',
-            // 'favicon',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
-
-</div>
+<div class="mainpanel">
+    <div class="contentpanel">
+        <?=
+        Breadcrumbs::widget([
+            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+        ])
+        ?>
+        <div class="panel">
+            <div class="panel-body">
+                <?= GridView::widget([
+                    'dataProvider' => $dataProvider,
+                    'filterModel' => $searchModel,
+                    'columns' => [
+                        ['class' => 'yii\grid\SerialColumn'],
+                        [
+                            'attribute' => 'site_name',
+                            'label' => 'Tên Page',
+                            'format' => 'raw',
+                            'value' => function($data) {
+                                $url = "/backend/config/update?id=" . $data['id'];
+                                return Html::a($data['site_name'], $url, ['name' => $data['id']]);
+                            }
+                        ],
+                        'title',
+                        ['class' => 'yii\grid\ActionColumn'],
+                    ],
+                ]); ?>
+            </div>
+        </div><!-- panel -->
+    </div><!-- contentpanel -->
+</div><!-- mainpanel -->
