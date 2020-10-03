@@ -80,9 +80,6 @@ class Controllers extends Controller {
         $model->action=Yii::$app->controller->action->id;       
         $model->page_url = Yii::$app->getRequest()->getUrl();
         $model->ip_address=Yii::$app->request->userIP;
-       $model->ip_address=Yii::$app->request->userIP;
-
-
         $model->save(FALSE);
 		
 		

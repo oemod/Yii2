@@ -31,7 +31,6 @@ class UserController extends Controllers
     public $fullnameField;
     public $searchClass;
     public $extraColumns = [];
-
     public function behaviors()
     {
         return [
